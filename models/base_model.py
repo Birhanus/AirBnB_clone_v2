@@ -4,7 +4,7 @@ import models
 from uuid import uuid4
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column
+from sqlalchemy import Column, Integer
 from sqlalchemy import DateTime
 from sqlalchemy import String
 
@@ -64,3 +64,4 @@ class BaseModel:
         """Return the print/str representation of the BaseModel instance."""
         d = self.__dict__.copy()
         d.pop("_sa_instance_state", None)
+        return "[{}] ({}) {}".format(type(self).__name__, self.id, d)
